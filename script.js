@@ -12,4 +12,15 @@ function main() {
     var svg = d3.select('body').append('svg')
         .attr("width", width)
         .attr("height", height)
+
+    // Create X-axis.
+    var xScale = d3.scaleLinear()
+        .domain([d3.min(data), d3.max(data)])
+        .range([50, width])
+
+    var x_axis = d3.axisBottom()
+        .scale(xScale);
+
+    svg.append('g')
+        .call(x_axis)
 }
