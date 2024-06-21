@@ -40,5 +40,13 @@ function main() {
         .attr("transform", `translate(0, ${height -20})`)
         .call(x_axis)
 
+    // Add labels.
+    bar.append('text').attr('x', function(d){
+        return xScale(d) - 25;})
+        .attr('y', barHeight / 2)
+        .attr('dy', '.35em')
+        .text(function(d) {
+            return d; 
+        });
 
 }
