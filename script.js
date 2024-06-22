@@ -25,7 +25,7 @@ function main() {
         .attr('transform', function (d, i) {
             return 'translate(0,'+ i * barHeight +')'
         });
-
+       
     // Add bars.
     bar.append("rect").attr('width', function(d){
         return xScale(d);
@@ -48,5 +48,24 @@ function main() {
         .text(function(d) {
             return d; 
         });
+
+    // Animate bars.
+    d3.selectAll('rect')
+        .transition()
+        .ease(d3.easeLinear)
+        .duration(5000)
+        .delay(function(d,i){return i*50})
+
+    // Add hover effect.
+    d3.selectAll("rect")
+        .on("mouseover", function(){
+            d3.select(this)
+                .style("fill","aqua")
+        })
+        .on("mouseout", function(){
+            d3.select(this)
+                .style("fill","lightskyblue")
+        })
+
 
 }
